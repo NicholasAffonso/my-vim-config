@@ -1,3 +1,14 @@
+" Install the plugin manager ---{{{
+
+:let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" }}}
+
+
 " GLOBAL------------------------------------------------------------------------------ {{{
 
 " Enable type file detection. Vim will be able to try to detect the type of file is use.
@@ -102,7 +113,14 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
-let g:molokai_original = 1
+" Nerdtree
+
+" Show hiden files
+ 
+let NERDTreeShowHidden=1
+
+
+" Airline theme
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
